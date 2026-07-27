@@ -327,26 +327,52 @@
     .gallery-grid{grid-template-columns:1fr;}
     .gallery-grid > .card-wide{grid-column:span 1;}
   }
-  .plan-card{
+  .photo-card{
     background:var(--white);
     border:1px solid var(--stone-300);
     overflow:hidden;
     display:flex; flex-direction:column;
   }
-  .plan-visual{
-    background:var(--green-900);
-    aspect-ratio:4/3;
+  .photo-main{
+    display:block; width:100%; aspect-ratio:4/3;
+    border:none; padding:0; margin:0; cursor:zoom-in;
+    background:var(--green-900); overflow:hidden;
     position:relative;
   }
-  .plan-visual svg{width:100%; height:100%; display:block;}
-  .plan-tag{
-    position:absolute; top:12px; left:12px;
-    font-family:var(--font-mono); font-size:.68rem; color:var(--green-100);
-    letter-spacing:.08em; background:rgba(0,0,0,.25); padding:4px 8px; border-radius:2px;
+  .photo-main img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease;}
+  .photo-main:hover img{transform:scale(1.04);}
+  .photo-main:focus-visible{outline:3px solid var(--green-500); outline-offset:-3px;}
+  .photo-thumbs{display:flex; gap:2px; background:var(--stone-300);}
+  .thumb{
+    flex:1; aspect-ratio:1/1; border:none; padding:0; margin:0; cursor:zoom-in;
+    overflow:hidden; background:var(--green-900);
   }
+  .thumb img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease;}
+  .thumb:hover img{transform:scale(1.08);}
   .plan-info{padding:20px 22px;}
   .plan-info h3{font-size:1.02rem; margin-bottom:.35em;}
   .plan-info p{font-size:.88rem; color:var(--concrete-600); margin:0;}
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed; inset:0; z-index:1000;
+    background:rgba(15,20,15,.94);
+    display:flex; align-items:center; justify-content:center;
+    padding:40px 24px;
+  }
+  .lightbox[hidden]{display:none;}
+  .lightbox figure{margin:0; max-width:min(90vw, 1000px); text-align:center;}
+  .lightbox img{max-width:100%; max-height:78vh; width:auto; margin:0 auto; border:1px solid rgba(255,255,255,.15);}
+  .lightbox figcaption{
+    color:var(--stone-100); font-family:var(--font-mono); font-size:.8rem;
+    letter-spacing:.06em; margin-top:16px;
+  }
+  .lightbox-close{
+    position:absolute; top:20px; right:24px;
+    background:none; border:none; color:var(--stone-100);
+    font-size:2.2rem; line-height:1; cursor:pointer; padding:8px;
+  }
+  .lightbox-close:focus-visible{outline:2px solid var(--green-500);}
 
   /* Zone */
   .zone{background:var(--green-900); color:var(--stone-100); position:relative; overflow:hidden;}
@@ -582,134 +608,66 @@
       <div class="section-head reveal">
         <p class="eyebrow">Réalisations</p>
         <h2>Quelques chantiers récents</h2>
-        <p>Un aperçu de nos interventions récentes dans les Hautes-Alpes, du terrassement au bâtiment fini.</p>
+        <p>Un aperçu de nos interventions récentes dans les Hautes-Alpes, du terrassement au bâtiment fini. Cliquez sur une photo pour l'agrandir.</p>
       </div>
-
-      <p class="gallery-note reveal">Fiches de chantier illustrées en attendant la mise en ligne des photos réelles — voir la note en fin de fichier pour les remplacer facilement par vos propres clichés.</p>
 
       <div class="gallery-grid reveal">
 
         <!-- 1 -->
-        <article class="plan-card card-wide">
-          <div class="plan-visual">
-            <span class="plan-tag">FICHE N°01</span>
-            <svg viewBox="0 0 400 300" role="img" aria-label="Plan schématique d'une dalle béton pour terrasse avec cuisine extérieure">
-              <defs>
-                <pattern id="hatch1" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="8" stroke="#5B7F4C" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="#1F3A24"/>
-              <rect x="0" y="0" width="400" height="300" fill="none" stroke="#3C6644" stroke-width="1"/>
-              <g opacity="0.5"><path d="M0 40h400M0 90h400M0 140h400M0 190h400M0 240h400" stroke="#2B5233" stroke-width="1"/><path d="M50 0v300M100 0v300M150 0v300M200 0v300M250 0v300M300 0v300M350 0v300" stroke="#2B5233" stroke-width="1"/></g>
-              <rect x="60" y="60" width="230" height="180" fill="url(#hatch1)" stroke="#EFF3E7" stroke-width="2"/>
-              <rect x="185" y="90" width="90" height="55" fill="#1F3A24" stroke="#EFF3E7" stroke-width="2"/>
-              <circle cx="230" cy="120" r="14" fill="none" stroke="#B15A34" stroke-width="2"/>
-              <circle cx="230" cy="120" r="4" fill="#B15A34"/>
-              <path d="M60 60l-14-14M290 60l14-14M60 240l-14 14M290 240l14 14" stroke="#EFF3E7" stroke-width="2"/>
-              <text x="60" y="266" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#D9E4CC">DALLE BÉTON — CUISINE EXTÉRIEURE</text>
-            </svg>
-          </div>
+        <article class="photo-card card-wide">
+          <button class="photo-main" data-full="images/dalle-beton.jpg" data-caption="Dalle béton">
+            <img src="images/dalle-beton.jpg" loading="lazy" alt="Dalle béton coulée pour une terrasse, réalisée par Riorda Maçonnerie">
+          </button>
           <div class="plan-info">
-            <h3>Dalle béton pour terrasse avec cuisine extérieure</h3>
-            <p>Coulage et finition d'une dalle béton extérieure, dimensionnée pour accueillir une cuisine d'été.</p>
+            <h3>Dalle béton</h3>
+            <p>Coulage et finition d'une dalle béton extérieure.</p>
           </div>
         </article>
 
         <!-- 2 -->
-        <article class="plan-card">
-          <div class="plan-visual">
-            <span class="plan-tag">FICHE N°02</span>
-            <svg viewBox="0 0 400 300" role="img" aria-label="Plan schématique de création d'ouverture pour baie vitrée dans un mur en agglomérés">
-              <defs>
-                <pattern id="hatch2" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <rect width="10" height="10" fill="none"/>
-                  <rect width="9" height="4.5" fill="none" stroke="#3C6644" stroke-width="0.8"/>
-                  <rect y="4.5" width="9" height="4.5" x="4.5" fill="none" stroke="#3C6644" stroke-width="0.8"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="#1F3A24"/>
-              <rect x="40" y="40" width="320" height="220" fill="url(#hatch2)" stroke="#EFF3E7" stroke-width="2"/>
-              <rect x="150" y="90" width="120" height="130" fill="#1F3A24" stroke="#B15A34" stroke-width="3" stroke-dasharray="6 4"/>
-              <line x1="150" y1="90" x2="270" y2="220" stroke="#B15A34" stroke-width="1"/>
-              <line x1="270" y1="90" x2="150" y2="220" stroke="#B15A34" stroke-width="1"/>
-              <rect x="146" y="82" width="128" height="10" fill="#EFF3E7"/>
-              <text x="40" y="286" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#D9E4CC">OUVERTURE BAIE VITRÉE — MUR AGGLOS</text>
-            </svg>
+        <article class="photo-card">
+          <button class="photo-main" data-full="images/ouverture-1.jpg" data-caption="Création d'ouvertures">
+            <img src="images/ouverture-1.jpg" loading="lazy" alt="Création d'une ouverture dans un mur en maçonnerie, chantier Riorda">
+          </button>
+          <div class="photo-thumbs">
+            <button class="thumb" data-full="images/ouverture-2.jpg" data-caption="Création d'ouvertures">
+              <img src="images/ouverture-2.jpg" loading="lazy" alt="Création d'ouvertures, vue 2">
+            </button>
           </div>
           <div class="plan-info">
-            <h3>Ouverture pour baie vitrée</h3>
-            <p>Création d'une ouverture dans un mur en agglomérés, avec pose du linteau.</p>
+            <h3>Création d'ouvertures</h3>
+            <p>Ouverture d'un mur pour la création d'une nouvelle baie.</p>
           </div>
         </article>
 
         <!-- 3 -->
-        <article class="plan-card">
-          <div class="plan-visual">
-            <span class="plan-tag">FICHE N°03</span>
-            <svg viewBox="0 0 400 300" role="img" aria-label="Plan schématique de vide sanitaire en béton banché puis murs et pignons en briques">
-              <rect width="400" height="300" fill="#1F3A24"/>
-              <rect x="30" y="220" width="150" height="50" fill="none" stroke="#EFF3E7" stroke-width="2"/>
-              <path d="M30 220h150" stroke="#EFF3E7" stroke-width="2"/>
-              <path d="M35 270h140" stroke="#3C6644" stroke-width="10" stroke-dasharray="4 3"/>
-              <text x="45" y="252" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D9E4CC">VIDE SANITAIRE</text>
-              <g>
-                <rect x="220" y="60" width="150" height="18" fill="none" stroke="#EFF3E7" stroke-width="1.4"/>
-                <rect x="220" y="78" width="150" height="18" fill="none" stroke="#EFF3E7" stroke-width="1.4"/>
-                <rect x="220" y="96" width="150" height="18" fill="none" stroke="#EFF3E7" stroke-width="1.4"/>
-                <rect x="235" y="114" width="150" height="18" fill="none" stroke="#EFF3E7" stroke-width="1.4"/>
-                <polygon points="220,60 295,20 370,60" fill="none" stroke="#B15A34" stroke-width="2"/>
-              </g>
-              <text x="220" y="150" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D9E4CC">MUR ET PIGNON — BRIQUES</text>
-            </svg>
+        <article class="photo-card">
+          <button class="photo-main" data-full="images/cheminee-1.jpg" data-caption="Démolition d'une cheminée et ouverture du mur">
+            <img src="images/cheminee-1.jpg" loading="lazy" alt="Démolition d'une cheminée et ouverture du mur, chantier Riorda">
+          </button>
+          <div class="photo-thumbs">
+            <button class="thumb" data-full="images/cheminee-2.jpg" data-caption="Démolition d'une cheminée et ouverture du mur">
+              <img src="images/cheminee-2.jpg" loading="lazy" alt="Démolition d'une cheminée et ouverture du mur, vue 2">
+            </button>
           </div>
           <div class="plan-info">
-            <h3>Vide sanitaire &amp; murs en briques</h3>
-            <p>Vide sanitaire en béton banché, puis élévation des murs et pignons en briques.</p>
+            <h3>Démolition de cheminée &amp; ouverture</h3>
+            <p>Démolition d'une cheminée existante et reprise de l'ouverture du mur.</p>
           </div>
         </article>
 
         <!-- 4 -->
-        <article class="plan-card">
-          <div class="plan-visual">
-            <span class="plan-tag">FICHE N°04</span>
-            <svg viewBox="0 0 400 300" role="img" aria-label="Plan schématique de vide sanitaire en béton banché et dalle">
-              <defs>
-                <pattern id="hatch4" width="8" height="8" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="8" stroke="#3C6644" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="300" fill="#1F3A24"/>
-              <rect x="70" y="150" width="260" height="16" fill="url(#hatch4)" stroke="#EFF3E7" stroke-width="2"/>
-              <rect x="90" y="166" width="14" height="60" fill="#1F3A24" stroke="#EFF3E7" stroke-width="2"/>
-              <rect x="296" y="166" width="14" height="60" fill="#1F3A24" stroke="#EFF3E7" stroke-width="2"/>
-              <line x1="70" y1="226" x2="330" y2="226" stroke="#EFF3E7" stroke-width="2" stroke-dasharray="3 3"/>
-              <path d="M60 240h280" stroke="#726C61" stroke-width="6"/>
-              <text x="70" y="130" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D9E4CC">DALLE BÉTON</text>
-              <text x="70" y="262" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D9E4CC">VIDE SANITAIRE BANCHÉ</text>
-            </svg>
-          </div>
-          <div class="plan-info">
-            <h3>Vide sanitaire &amp; dalle</h3>
-            <p>Réalisation d'un vide sanitaire en béton banché, avec dalle de compression.</p>
-          </div>
-        </article>
-
-        <!-- 5 -->
-        <article class="plan-card">
-          <div class="plan-visual">
-            <span class="plan-tag">FICHE N°05</span>
-            <svg viewBox="0 0 400 300" role="img" aria-label="Plan schématique de vide sanitaire, dalle et garage en béton banché">
-              <rect width="400" height="300" fill="#1F3A24"/>
-              <rect x="80" y="60" width="240" height="140" fill="#1F3A24" stroke="#EFF3E7" stroke-width="2"/>
-              <line x1="80" y1="90" x2="320" y2="90" stroke="#EFF3E7" stroke-width="1.2"/>
-              <line x1="80" y1="120" x2="320" y2="120" stroke="#EFF3E7" stroke-width="1.2"/>
-              <line x1="80" y1="150" x2="320" y2="150" stroke="#EFF3E7" stroke-width="1.2"/>
-              <line x1="80" y1="180" x2="320" y2="180" stroke="#EFF3E7" stroke-width="1.2"/>
-              <rect x="60" y="200" width="280" height="20" fill="#3C6644" opacity="0.7" stroke="#EFF3E7" stroke-width="1.4"/>
-              <text x="80" y="242" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D9E4CC">GARAGE — PORTE BÉTON BANCHÉ</text>
-              <text x="80" y="260" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D9E4CC">VIDE SANITAIRE + DALLE</text>
-            </svg>
+        <article class="photo-card card-wide">
+          <button class="photo-main" data-full="images/garage-1.jpg" data-caption="Vide sanitaire, dalle et garage en béton banché">
+            <img src="images/garage-1.jpg" loading="lazy" alt="Vide sanitaire, dalle et garage en béton banché, chantier Riorda">
+          </button>
+          <div class="photo-thumbs">
+            <button class="thumb" data-full="images/garage-2.jpg" data-caption="Vide sanitaire, dalle et garage en béton banché">
+              <img src="images/garage-2.jpg" loading="lazy" alt="Vide sanitaire, dalle et garage en béton banché, vue 2">
+            </button>
+            <button class="thumb" data-full="images/garage-3.jpg" data-caption="Vide sanitaire, dalle et garage en béton banché">
+              <img src="images/garage-3.jpg" loading="lazy" alt="Vide sanitaire, dalle et garage en béton banché, vue 3">
+            </button>
           </div>
           <div class="plan-info">
             <h3>Vide sanitaire, dalle &amp; garage</h3>
@@ -717,9 +675,72 @@
           </div>
         </article>
 
+        <!-- 5 -->
+        <article class="photo-card">
+          <button class="photo-main" data-full="images/vide-sanitaire-dalle-1.jpg" data-caption="Vide sanitaire en béton banché et dalle">
+            <img src="images/vide-sanitaire-dalle-1.jpg" loading="lazy" alt="Vide sanitaire en béton banché et dalle, chantier Riorda">
+          </button>
+          <div class="photo-thumbs">
+            <button class="thumb" data-full="images/vide-sanitaire-dalle-2.jpg" data-caption="Vide sanitaire en béton banché et dalle">
+              <img src="images/vide-sanitaire-dalle-2.jpg" loading="lazy" alt="Vide sanitaire en béton banché et dalle, vue 2">
+            </button>
+          </div>
+          <div class="plan-info">
+            <h3>Vide sanitaire &amp; dalle</h3>
+            <p>Réalisation d'un vide sanitaire en béton banché, avec dalle de compression.</p>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="photo-card">
+          <button class="photo-main" data-full="images/mur-brique-1.jpg" data-caption="Construction en brique sur vide sanitaire en béton banché">
+            <img src="images/mur-brique-1.jpg" loading="lazy" alt="Construction en brique sur vide sanitaire en béton banché, chantier Riorda">
+          </button>
+          <div class="photo-thumbs">
+            <button class="thumb" data-full="images/mur-brique-2.jpg" data-caption="Construction en brique sur vide sanitaire en béton banché">
+              <img src="images/mur-brique-2.jpg" loading="lazy" alt="Construction en brique sur vide sanitaire en béton banché, vue 2">
+            </button>
+          </div>
+          <div class="plan-info">
+            <h3>Murs en briques sur vide sanitaire</h3>
+            <p>Construction en briques sur un vide sanitaire en béton banché.</p>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="photo-card">
+          <button class="photo-main" data-full="images/maison-banche.jpg" data-caption="Maison en béton banché">
+            <img src="images/maison-banche.jpg" loading="lazy" alt="Maison en béton banché construite par Riorda Maçonnerie">
+          </button>
+          <div class="plan-info">
+            <h3>Maison en béton banché</h3>
+            <p>Construction complète d'une maison en béton banché.</p>
+          </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="photo-card">
+          <button class="photo-main" data-full="images/maison-individuelle-banche.jpg" data-caption="Maison individuelle en béton banché">
+            <img src="images/maison-individuelle-banche.jpg" loading="lazy" alt="Maison individuelle en béton banché construite par Riorda Maçonnerie">
+          </button>
+          <div class="plan-info">
+            <h3>Maison individuelle en béton banché</h3>
+            <p>Construction d'une maison individuelle, gros œuvre en béton banché.</p>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">&times;</button>
+    <figure>
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
 
   <!-- ZONE -->
   <section class="zone" id="zone">
@@ -892,6 +913,42 @@
   } else {
     revealEls.forEach(function(el){ el.classList.add('in'); });
   }
+
+  // Lightbox galerie
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxClose = document.getElementById('lightboxClose');
+  var lastFocused = null;
+
+  function openLightbox(src, caption){
+    lastFocused = document.activeElement;
+    lightboxImg.src = src;
+    lightboxImg.alt = caption;
+    lightboxCaption.textContent = caption;
+    lightbox.hidden = false;
+    lightboxClose.focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.hidden = true;
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+    if(lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.photo-main, .thumb').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openLightbox(btn.getAttribute('data-full'), btn.getAttribute('data-caption'));
+    });
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+  });
 
   // Devis form -> mailto fallback (site statique, sans backend)
   document.getElementById('devisForm').addEventListener('submit', function(e){
