@@ -172,18 +172,21 @@
     padding:14px 24px;
   }
   .logo{
-    display:flex; align-items:center; gap:.6em;
+    display:flex; align-items:center; gap:.65em;
     text-decoration:none;
   }
   .logo svg{width:40px; height:40px; flex-shrink:0;}
-  .logo-text{font-family:var(--font-display); font-weight:700; font-size:1.15rem; color:var(--green-900); line-height:1;}
-  .logo-sub{font-family:var(--font-mono); font-size:.6rem; letter-spacing:.12em; color:var(--concrete-600); text-transform:uppercase; margin-top:2px;}
+  .logo-copy{display:flex; flex-direction:column; justify-content:center; gap:3px;}
+  .logo-text{font-family:var(--font-display); font-weight:700; font-size:1.15rem; color:var(--green-900); line-height:1; white-space:nowrap;}
+  .logo-sub{font-family:var(--font-mono); font-size:.62rem; letter-spacing:.06em; color:var(--concrete-600); text-transform:uppercase; white-space:nowrap; line-height:1;}
   .nav-links{
-    display:flex; align-items:center; gap:28px;
+    display:flex; align-items:center; gap:26px;
     list-style:none; margin:0; padding:0;
   }
   .nav-links a{
+    display:block;
     text-decoration:none; font-weight:600; font-size:.92rem; color:var(--green-900);
+    white-space:nowrap;
     padding:4px 0; border-bottom:2px solid transparent;
     transition:border-color .15s ease;
   }
@@ -194,10 +197,11 @@
     font-family:var(--font-mono); font-size:.85rem; font-weight:500;
     text-decoration:none; color:var(--green-900); white-space:nowrap;
   }
-  .burger{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .mobile-only{display:none;}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:6px; flex-shrink:0;}
   .burger span{display:block; width:24px; height:2px; background:var(--green-900); margin:5px 0;}
 
-  @media (max-width:900px){
+  @media (max-width:1180px){
     .nav-links{
       position:fixed; inset:70px 0 0 0; background:var(--stone-100);
       flex-direction:column; align-items:flex-start; padding:32px 28px; gap:22px;
@@ -205,7 +209,8 @@
       overflow-y:auto;
     }
     .nav-links.open{transform:translateX(0);}
-    .nav-links a{font-size:1.15rem;}
+    .nav-links a{font-size:1.15rem; white-space:normal;}
+    .mobile-only{display:list-item;}
     .nav-phone{display:none;}
     .burger{display:block;}
   }
@@ -214,8 +219,9 @@
   .hero{
     position:relative;
     background:
-      radial-gradient(1200px 600px at 85% -10%, rgba(91,127,76,.35), transparent 60%),
-      linear-gradient(180deg, var(--green-900), var(--green-700) 60%, var(--green-700));
+      linear-gradient(180deg, rgba(31,58,36,.90), rgba(43,82,51,.72) 55%, rgba(31,58,36,.92)),
+      radial-gradient(1200px 600px at 85% -10%, rgba(91,127,76,.3), transparent 60%),
+      url('https://raw.githubusercontent.com/sbrum05/atelieraltitude/main/banniere.png') center 42% / cover no-repeat;
     color:var(--stone-100);
     overflow:hidden;
     padding:96px 0 72px;
@@ -449,9 +455,9 @@
         <rect x="35" y="36" width="17" height="13" fill="#EFF3E7"/>
         <rect x="23.5" y="21" width="17" height="13" fill="#5B7F4C"/>
       </svg>
-      <span>
-        <span class="logo-text" style="display:block;">RIORDA</span>
-        <span class="logo-sub">Maçonnerie · depuis 1967</span>
+      <span class="logo-copy">
+        <span class="logo-text">RIORDA</span>
+        <span class="logo-sub">Maçonnerie — depuis 1967</span>
       </span>
     </a>
 
