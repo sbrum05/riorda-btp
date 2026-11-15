@@ -40,7 +40,7 @@
     "addressCountry": "FR"
   },
   "telephone": "+33492430415",
-  "email": "riorda-btp@wanadoo.fr",
+  "email": "info@riorda.fr",
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Hautes-Alpes (05)"
@@ -393,9 +393,16 @@
   .zone-map{width:100%; height:auto;}
   @media (max-width:880px){.zone-grid{grid-template-columns:1fr;} .zone-map{order:-1;}}
 
-  /* Contact */
+  /* Contact : 2 colonnes sur ordinateur ; sur mobile, formulaire au-dessus des coordonnées */
   .contact{background:var(--stone-100);}
-  .contact-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px;}
+  .contact-grid{
+    display:grid; grid-template-columns:.85fr 1.15fr; column-gap:56px;
+    grid-template-areas:"intro form" "details form";
+    grid-template-rows:auto 1fr;
+  }
+  .contact-info{grid-area:intro;}
+  .contact-form-wrap{grid-area:form;}
+  .contact-details{grid-area:details;}
   .contact-info h2{font-size:clamp(1.7rem, 3vw, 2.2rem);}
   .info-list{list-style:none; margin:28px 0 0; padding:0; display:flex; flex-direction:column; gap:20px;}
   .info-list li{display:flex; gap:14px; align-items:flex-start;}
@@ -403,6 +410,14 @@
   .info-list a{text-decoration:none; font-weight:600;}
   .info-list a:hover{text-decoration:underline;}
   .info-list .muted{color:var(--concrete-600); font-weight:400; font-size:.92rem;}
+  @media (max-width:880px){
+    .contact-grid{
+      grid-template-columns:1fr; grid-template-rows:auto;
+      grid-template-areas:"intro" "form" "details";
+      row-gap:32px;
+    }
+    .info-list{margin-top:0;}
+  }
 
   .form-card{
     background:var(--white); border:1px solid var(--stone-300);
@@ -784,40 +799,16 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT : 2 colonnes sur ordinateur ; sur mobile : titre, formulaire, coordonnées -->
   <section class="contact" id="contact">
     <div class="wrap contact-grid">
       <div class="contact-info reveal">
         <p class="eyebrow">Contact</p>
         <h2>Demander un devis</h2>
         <p>Décrivez votre projet, nous revenons vers vous rapidement pour en discuter et établir un devis gratuit.</p>
-        <ul class="info-list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Quartier+du+Boscodon+ZA+les+Moulins+05200+Crots" target="_blank" rel="noopener">Quartier du Boscodon, ZA les Moulins<br>05200 Crots</a><br>
-              <span class="muted">Hautes-Alpes</span>
-            </div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div><a href="tel:+33492430415">04 92 43 04 15</a></div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
-            <div><a href="mailto:riorda-btp@wanadoo.fr">riorda-btp@wanadoo.fr</a></div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-            <div>
-              <span>Lundi – Vendredi</span><br>
-              <span class="muted">7h30 – 17h00</span>
-            </div>
-          </li>
-        </ul>
       </div>
 
-      <div class="reveal">
+      <div class="contact-form-wrap reveal">
         <form class="form-card" id="devisForm">
           <div class="form-row">
             <div class="field">
@@ -855,6 +846,33 @@
           </div>
         </form>
       </div>
+
+      <div class="contact-details reveal">
+        <ul class="info-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Quartier+du+Boscodon+ZA+les+Moulins+05200+Crots" target="_blank" rel="noopener">Quartier du Boscodon, ZA les Moulins<br>05200 Crots</a><br>
+              <span class="muted">Hautes-Alpes</span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><a href="tel:+33492430415">04 92 43 04 15</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+            <div><a href="mailto:info@riorda.fr">info@riorda.fr</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <div>
+              <span>Lundi – Vendredi</span><br>
+              <span class="muted">7h30 – 17h00</span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -880,7 +898,7 @@
         <h4>Coordonnées</h4>
         <ul>
           <li><a href="tel:+33492430415">04 92 43 04 15</a></li>
-          <li><a href="mailto:riorda-btp@wanadoo.fr">riorda-btp@wanadoo.fr</a></li>
+          <li><a href="mailto:info@riorda.fr">info@riorda.fr</a></li>
           <li><a href="#contact">Quartier du Boscodon, 05200 Crots</a></li>
         </ul>
       </div>
@@ -972,7 +990,7 @@
     var subject = 'Demande de devis — ' + type;
     var body = 'Nom : ' + nom + '\nTéléphone : ' + tel + '\nE-mail : ' + email + '\nType de projet : ' + type + '\n\nMessage :\n' + message;
 
-    window.location.href = 'mailto:riorda-btp@wanadoo.fr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = 'mailto:info@riorda.fr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 </script>
 
