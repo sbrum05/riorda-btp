@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%232B5233'/%3E%3Crect x='14' y='34' width='16' height='12' fill='%23D9E4CC'/%3E%3Crect x='32' y='34' width='16' height='12' fill='%23EFF3E7'/%3E%3Crect x='23' y='20' width='16' height='12' fill='%235B7F4C'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23008000'/%3E%3Crect x='14' y='34' width='16' height='12' fill='%23D4EBCB'/%3E%3Crect x='32' y='34' width='16' height='12' fill='%23EEF7E9'/%3E%3Crect x='23' y='20' width='16' height='12' fill='%238BC98B'/%3E%3C/svg%3E">
 
 <script type="application/ld+json">
 {
@@ -52,12 +52,12 @@
 
 <style>
   :root{
-    --green-900:#1F3A24;
-    --green-700:#2B5233;
-    --green-600:#3C6644;
-    --green-500:#5B7F4C;
-    --green-200:#D9E4CC;
-    --green-100:#EFF3E7;
+    --green-900:#008000;
+    --green-700:#008000;
+    --green-600:#008000;
+    --green-500:#4CB84C;
+    --green-200:#EAF6E5;
+    --green-100:#EEF7E9;
     --stone-100:#F6F2E8;
     --stone-200:#EFE9DA;
     --stone-300:#E1D9C6;
@@ -219,7 +219,7 @@
   .hero{
     position:relative;
     background:
-      linear-gradient(115deg, rgba(20,36,24,.88) 0%, rgba(20,36,24,.68) 28%, rgba(20,36,24,.22) 58%, rgba(20,36,24,.45) 100%),
+      linear-gradient(115deg, rgba(0,128,0,.88) 0%, rgba(0,128,0,.68) 28%, rgba(0,128,0,.22) 58%, rgba(0,128,0,.45) 100%),
       url('https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Riorda grue.jpeg') center 42% / cover no-repeat;
     color:var(--stone-100);
     overflow:hidden;
@@ -252,7 +252,7 @@
   }
   @media (max-width:820px){
     .hero-inner{grid-template-columns:1fr;}
-    .hero-badge{justify-self:start;}
+    .hero-badge{display:none;}
   }
 
   .stats{
@@ -449,10 +449,10 @@
   <div class="nav wrap">
     <a href="#top" class="logo" aria-label="Riorda Maçonnerie, accueil">
       <svg viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="10" fill="#2B5233"/>
-        <rect x="12" y="36" width="17" height="13" fill="#D9E4CC"/>
-        <rect x="35" y="36" width="17" height="13" fill="#EFF3E7"/>
-        <rect x="23.5" y="21" width="17" height="13" fill="#5B7F4C"/>
+        <rect width="64" height="64" rx="10" fill="#008000"/>
+        <rect x="12" y="36" width="17" height="13" fill="#D4EBCB"/>
+        <rect x="35" y="36" width="17" height="13" fill="#EEF7E9"/>
+        <rect x="23.5" y="21" width="17" height="13" fill="#8BC98B"/>
       </svg>
       <span class="logo-copy">
         <span class="logo-text">RIORDA</span>
@@ -501,9 +501,9 @@
         <svg width="220" height="220" viewBox="0 0 220 220" role="img" aria-hidden="true">
           <circle cx="110" cy="110" r="104" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
           <circle cx="110" cy="110" r="86" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
-          <text x="110" y="96" text-anchor="middle" fill="#EFF3E7" font-family="'Bricolage Grotesque', sans-serif" font-weight="700" font-size="46">1967</text>
+          <text x="110" y="96" text-anchor="middle" fill="#EEF7E9" font-family="'Bricolage Grotesque', sans-serif" font-weight="700" font-size="46">1967</text>
           <text x="110" y="122" text-anchor="middle" fill="#B15A34" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="2">ENTREPRISE FAMILIALE</text>
-          <text x="110" y="140" text-anchor="middle" fill="#D9E4CC" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="2">CROTS · 05</text>
+          <text x="110" y="140" text-anchor="middle" fill="#D4EBCB" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="2">CROTS · 05</text>
         </svg>
       </div>
     </div>
@@ -514,7 +514,7 @@
       <div class="stat"><span class="stat-num">1967</span><span class="stat-label">Année de fondation</span></div>
       <div class="stat"><span class="stat-num">59 ans</span><span class="stat-label">D'expérience de terrain</span></div>
       <div class="stat"><span class="stat-num">05</span><span class="stat-label">Hautes-Alpes, zone d'intervention</span></div>
-      <div class="stat"><span class="stat-num">Qualibat RGE</span><span class="stat-label">Entreprise certifiée</span></div>
+      <div class="stat"><span class="stat-num">Bureau d'étude</span><span class="stat-label">Béton : qualité des ouvrages</span></div>
     </div>
   </div>
 
@@ -524,7 +524,7 @@
       <div class="section-head reveal">
         <p class="eyebrow">Savoir-faire</p>
         <h2>Tout type de maçonnerie</h2>
-        <p>Qu'il s'agisse d'un ouvrage ponctuel ou d'une construction neuve dans son ensemble, l'équipe Riorda intervient à chaque étape du gros œuvre.</p>
+        <p>Qu'il s'agisse d'un ouvrage ponctuel ou d'une construction neuve dans son ensemble, l'équipe Riorda intervient à chaque étape du gros œuvre. Pour les ouvrages en béton, l'entreprise fait appel à un bureau d'étude béton afin de vous assurer la qualité des ouvrages.</p>
       </div>
 
       <div class="service-grid reveal">
@@ -573,7 +573,7 @@
         <div class="history-meta">
           <div class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l9 4.5v9L12 20l-9-4.5v-9L12 2z"/><path d="M12 12l9-4.5M12 12v9M12 12L3 7.5"/></svg>
-            <span>Certifiée Qualibat RGE</span>
+            <span>Un bureau d'étude béton pour vous assurer la qualité des ouvrages</span>
           </div>
           <div class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -598,7 +598,7 @@
           <polygon points="60,40 300,30 330,90 320,340 40,360 30,100" fill="none" stroke="#B9B0A0" stroke-width="1" transform="translate(6,6)"/>
           <line x1="55" y1="120" x2="315" y2="112" stroke="#C9C0AE" stroke-width="1"/>
           <line x1="48" y1="300" x2="322" y2="292" stroke="#C9C0AE" stroke-width="1"/>
-          <text x="180" y="205" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="58" fill="#2B5233" opacity="0.15">1967</text>
+          <text x="180" y="205" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="58" fill="#008000" opacity="0.15">1967</text>
           <text x="180" y="200" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="58" fill="#3A3730">1967</text>
           <text x="180" y="240" text-anchor="middle" font-family="'Bricolage Grotesque', sans-serif" font-weight="700" font-size="22" fill="#3A3730" letter-spacing="1">RIORDA</text>
           <text x="180" y="262" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#726C61" letter-spacing="2">CROTS · HAUTES-ALPES</text>
@@ -763,17 +763,22 @@
           <span class="town-chip">Briançon</span>
           <span class="town-chip">L'Argentière-la-Bessée</span>
           <span class="town-chip">Chorges</span>
+          <span class="town-chip">Prunières</span>
+          <span class="town-chip">Les Orres</span>
+          <span class="town-chip">Saint-Apollinaire</span>
+          <span class="town-chip">Saint-Sauveur</span>
+          <span class="town-chip">Châteauroux-les-Alpes</span>
         </div>
       </div>
       <div class="reveal" aria-hidden="true">
         <svg class="zone-map" viewBox="0 0 480 320" role="img" aria-label="Silhouette de montagnes des Hautes-Alpes avec repères des communes d'intervention">
-          <polygon points="0,320 0,210 60,150 110,200 160,120 220,190 270,110 330,200 380,140 430,210 480,170 480,320" fill="#2B5233"/>
-          <polygon points="0,320 0,250 70,200 130,240 190,180 250,230 310,170 370,235 420,190 480,230 480,320" fill="#3C6644" opacity="0.85"/>
-          <circle cx="130" cy="230" r="5" fill="#EFF3E7"/>
+          <polygon points="0,320 0,210 60,150 110,200 160,120 220,190 270,110 330,200 380,140 430,210 480,170 480,320" fill="#3DAA3D"/>
+          <polygon points="0,320 0,250 70,200 130,240 190,180 250,230 310,170 370,235 420,190 480,230 480,320" fill="#6CC46C" opacity="0.85"/>
+          <circle cx="130" cy="230" r="5" fill="#EEF7E9"/>
           <circle cx="230" cy="215" r="6" fill="#B15A34"/>
-          <circle cx="330" cy="210" r="4" fill="#EFF3E7"/>
-          <circle cx="400" cy="205" r="4" fill="#EFF3E7"/>
-          <text x="230" y="200" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#EFF3E7">CROTS</text>
+          <circle cx="330" cy="210" r="4" fill="#EEF7E9"/>
+          <circle cx="400" cy="205" r="4" fill="#EEF7E9"/>
+          <text x="230" y="200" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#EEF7E9">CROTS</text>
         </svg>
       </div>
     </div>
