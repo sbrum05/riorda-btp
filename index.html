@@ -369,6 +369,16 @@
   .plan-info h3{font-size:1.02rem; margin-bottom:.35em;}
   .plan-info p{font-size:.88rem; color:var(--concrete-600); margin:0;}
 
+  /* Matériel */
+  .equipment{background:var(--stone-200);}
+  .equip-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
+  .equip-card{background:var(--white); border:1px solid var(--stone-300); overflow:hidden; display:flex; flex-direction:column;}
+  .equip-photos{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--stone-300);}
+  .equip-photo{margin:0; background:var(--white); display:flex; flex-direction:column;}
+  .equip-photo figcaption{flex:1; padding:10px 14px; font-size:.8rem; font-weight:600; line-height:1.3; color:var(--concrete-800);}
+  @media (max-width:980px){.equip-grid{grid-template-columns:1fr;}}
+  @media (max-width:560px){.equip-photos{grid-template-columns:1fr;}}
+
   /* Lightbox */
   .lightbox{
     position:fixed; inset:0; z-index:1000;
@@ -612,6 +622,104 @@
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12a9 9 0 1 1 3 6.7"/><path d="M3 21v-5h5"/></svg>
           <h3>Rénovation &amp; réhabilitation</h3>
           <p>Remise aux normes et transformation de bâtiments existants, en site occupé ou non.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATÉRIEL -->
+  <section class="equipment" id="materiel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Matériel</p>
+        <h2>Notre matériel</h2>
+        <p>Du terrassement au coulage du béton, l'entreprise dispose de son propre matériel : grue, camions, pelleteuses et banches. Cliquez sur une photo pour l'agrandir.</p>
+      </div>
+
+      <div class="equip-grid reveal">
+
+        <article class="equip-card">
+          <div class="equip-photos">
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Grue%20Potain%20Igo%2021.jpeg" data-caption="Grue Potain Igo 21">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Grue%20Potain%20Igo%2021.jpeg" loading="lazy" alt="Grue Potain Igo 21, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Grue Potain Igo 21</figcaption>
+            </figure>
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Manitou%201335.jpeg" data-caption="Manitou 1335">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Manitou%201335.jpeg" loading="lazy" alt="Manitou 1335, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Manitou 1335</figcaption>
+            </figure>
+          </div>
+          <div class="plan-info">
+            <h3>Levage &amp; manutention</h3>
+            <p>Grue et Manitou pour déplacer et mettre en place les matériaux sur le chantier.</p>
+          </div>
+        </article>
+
+        <article class="equip-card">
+          <div class="equip-photos">
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Camion%20toupie%208x4%20Mercedes%20et%20Manitou%201335.jpeg" data-caption="Camion toupie 8x4 Mercedes et Manitou 1335">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Camion%20toupie%208x4%20Mercedes%20et%20Manitou%201335.jpeg" loading="lazy" alt="Camion toupie 8x4 Mercedes et Manitou 1335, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Camion toupie 8x4 Mercedes et Manitou 1335</figcaption>
+            </figure>
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Camion%206x4%20ampliroll%20Iveco.jpeg" data-caption="Camion 6x4 ampliroll Iveco">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Camion%206x4%20ampliroll%20Iveco.jpeg" loading="lazy" alt="Camion 6x4 ampliroll Iveco, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Camion 6x4 ampliroll Iveco</figcaption>
+            </figure>
+          </div>
+          <div class="plan-info">
+            <h3>Camions</h3>
+            <p>Camion toupie pour le béton et camion ampliroll pour le transport des bennes et des matériaux.</p>
+          </div>
+        </article>
+
+        <article class="equip-card">
+          <div class="equip-photos">
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Pelle%20Kubota%208%20tonnes.jpeg" data-caption="Pelle Kubota 8 tonnes">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Pelle%20Kubota%208%20tonnes.jpeg" loading="lazy" alt="Pelle Kubota 8 tonnes, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Pelle Kubota 8 tonnes</figcaption>
+            </figure>
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Mini%20Pelle%20Yanmar%201,7%20tonnes.jpeg" data-caption="Mini pelle Yanmar 1,7 tonnes">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Mini%20Pelle%20Yanmar%201,7%20tonnes.jpeg" loading="lazy" alt="Mini pelle Yanmar 1,7 tonnes, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Mini pelle Yanmar 1,7 tonnes</figcaption>
+            </figure>
+          </div>
+          <div class="plan-info">
+            <h3>Terrassement</h3>
+            <p>Une pelle de 8 tonnes et une mini-pelle de 1,7 tonnes pour les terrassements, les tranchées et les réseaux.</p>
+          </div>
+        </article>
+
+        <article class="equip-card">
+          <div class="equip-photos">
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/banches%20aluminium.jpeg" data-caption="Banches aluminium">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/banches%20aluminium.jpeg" loading="lazy" alt="Banches aluminium, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Banches aluminium</figcaption>
+            </figure>
+            <figure class="equip-photo">
+              <button class="photo-main" data-full="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Banches%20satellite%20acier%20avec%20camion%20toupie.jpeg" data-caption="Banches satellite acier avec camion toupie">
+                <img src="https://raw.githubusercontent.com/sbrum05/riorda-btp/main/Banches%20satellite%20acier%20avec%20camion%20toupie.jpeg" loading="lazy" alt="Banches satellite acier avec camion toupie, matériel de l'entreprise Riorda">
+              </button>
+              <figcaption>Banches satellite acier avec camion toupie</figcaption>
+            </figure>
+          </div>
+          <div class="plan-info">
+            <h3>Banches</h3>
+            <p>Banches aluminium et banches satellite en acier pour réaliser les murs et les ouvrages en béton banché.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -1037,6 +1145,7 @@
         <h4>Navigation</h4>
         <ul>
           <li><a href="#savoir-faire">Savoir-faire</a></li>
+          <li><a href="#materiel">Notre matériel</a></li>
           <li><a href="#realisations">Réalisations</a></li>
           <li><a href="#histoire">Notre histoire</a></li>
           <li><a href="#contact">Contact</a></li>
